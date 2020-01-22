@@ -1,23 +1,40 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import 
+{
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
+import CategoryComponent from './CategoryComponent';
+import PostComponent from './PostComponent';
+import HeaderComponent from './HeaderComponent';
+import NotFoundComponent from './NotFoundComponent';
+import AdminComponent from './AdminComponent';
+import AddCategoryComponent from './AddCategoryComponent';
+import AddPostComponent from './AddPostComponent';
+import TimerComponent from './TimerComponent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="App_main">
+      <header>
+        <Router>
+          <HeaderComponent></HeaderComponent>
+          <Switch>
+              <Route exact path="/" component={PostComponent}></Route>
+              <Route exact path="/categories" component={CategoryComponent}></Route>
+              <Route exact path="/post" component={PostComponent}></Route>
+              <Route exact path="/add_post" component={AddPostComponent}></Route>
+              <Route exact path="/add_category" component={AddCategoryComponent}></Route>
+              <Route component={NotFoundComponent}></Route>
+          </Switch>
+        </Router>
+        <div className="App_custom">
+          <TimerComponent></TimerComponent>
+        </div>
       </header>
     </div>
   );

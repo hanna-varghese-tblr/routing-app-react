@@ -1,6 +1,53 @@
 .App {
-  text-align: center;
+  text-align: left;
+
 }
+.App_main
+{
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+  font-size: calc(10px + 1vmin);
+  color: black;
+}
+.timer_cls
+{
+  font-weight:bold;
+  color:rgb(64, 64, 167);
+  float:right;
+  font-size:large;
+}
+.navbar
+{
+  margin-bottom:1%;
+}
+.form-element
+{
+  width:30%;
+}
+.margin-button
+{
+  margin-top:1%;
+}
+.padding_cls
+{
+  padding:1%;
+}
+.App_custom
+{
+  text-align:left;
+  padding:2%;
+
+  /*background-color: #4865a7;*/
+ 
+}
+a
+{
+  color:white;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -14,12 +61,12 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #4865a7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
   font-size: calc(10px + 2vmin);
   color: white;
 }
