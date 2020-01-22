@@ -29,3 +29,6 @@ export default class CategoryComponent extends Component{
         )
     }
 }
+
+
+
