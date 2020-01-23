@@ -83,3 +83,13 @@ a
     transform: rotate(360deg);
   }
 }
+.card
+{
+  width:60%;
+  margin-bottom:2%;
+}
+
+.bg-info
+{
+  color:white;
+}

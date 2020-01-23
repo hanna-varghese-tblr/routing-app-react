@@ -18,6 +18,7 @@ export default class HeaderComponent extends Component{
                     <li className="nav-item"><Link to="/post" className="nav-link">Post</Link></li>
                     <li className="nav-item"><Link to="/add_category" className="nav-link">Add Category</Link></li>
                     <li className="nav-item"><Link to="/add_post" className="nav-link">Add Post</Link></li>
+                    <li className="nav-item"><Link to="/vote" className="nav-link" >Vote</Link></li>
                 </ul>
             </nav>
 

@@ -16,6 +16,7 @@ import AdminComponent from './AdminComponent';
 import AddCategoryComponent from './AddCategoryComponent';
 import AddPostComponent from './AddPostComponent';
 import TimerComponent from './TimerComponent';
+import VoteComponent from './VoteComponent';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
               <Route exact path="/post" component={PostComponent}></Route>
               <Route exact path="/add_post" component={AddPostComponent}></Route>
               <Route exact path="/add_category" component={AddCategoryComponent}></Route>
+              <Route exact path="/vote" component={VoteComponent}></Route>
               <Route component={NotFoundComponent}></Route>
           </Switch>
         </Router>
