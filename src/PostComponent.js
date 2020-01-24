@@ -1,18 +1,35 @@
 import React, { Component } from 'react';
+import Contacts from './Contacts';
 /*import data from './data';*/
 
 export default class PostComponent extends Component{
-    /*componentDidMount()
+    constructor(props)
     {
-        fetch(http://localhost/data.json).then()
-    }*/
+        super(props)
+        this.state={
+            contact:[]
+        }
+    }
+    componentDidMount()
+    {
+        fetch('http://jsonplaceholder.typicode.com/users')
+            .then(res=>res.json())
+            .then((data)=>
+                {
+                    this.setState({
+                        contact:data
+                    })
+                }
+            )
+            .catch(console.log)
+    }
     render()
     {
         return(
             <div className="padding_cls">
-                <h4 className="padding_cls">Posts :</h4>
+                <h4 className="padding_cls">Sample data from json:</h4>
                 {
-                  /*  data.map((d)=><p>{d.id}</p> )*/
+                    <Contacts contacts={this.state.contact}></Contacts>
                 }
             </div>
         )

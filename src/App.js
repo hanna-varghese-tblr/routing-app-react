@@ -17,6 +17,7 @@ import AddCategoryComponent from './AddCategoryComponent';
 import AddPostComponent from './AddPostComponent';
 import TimerComponent from './TimerComponent';
 import VoteComponent from './VoteComponent';
+import CheckComponent from './CheckComponent';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         </Router>
         <div className="App_custom">
           <TimerComponent></TimerComponent>
+          
         </div>
       </header>
     </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import SimpleReactValidator from 'simple-react-validator';
 export default class AddPostComponent extends Component{
     constructor(props)
     {
@@ -10,6 +10,7 @@ export default class AddPostComponent extends Component{
             category:'',
             author:''
         };
+        this.validator=new SimpleReactValidator();
         this.changeInput=this.changeInput.bind(this);
     }
     
@@ -24,16 +25,27 @@ export default class AddPostComponent extends Component{
       }
     handleSubmit(e)
     {
-        alert("The category title is set to : "+this.state.title+" The description is : "+this.state.desc);
+        console.log("In submit");
+        if (this.validator.allValid()) {
+            alert('Successfully submitted');
+        } 
+        else {
+            this.validator.showMessages();
+            alert("failed");
+            this.forceUpdate();
+        }
+       // alert("The category title is set to : "+this.state.title+" The description is : "+this.state.desc);
     }
     render()
     {
         return(
            <div className="padding_cls">
                 <h4>Add Post</h4>
-                <form onSubmit={this.handleSubmit}>
+                <form >
                     <label>Post Title</label>
                     <input type="text" name="title" className="form-control form-element" value={this.state.title} onChange={this.changeInput}></input>
+                    { this.validator.message('title', this.state.title, 'required') }
+                   
                     <label>Post Author</label>
                     <input type="text" name="author" className="form-control form-element" value={this.state.author} onChange={this.changeInput}></input>
                     <label>Post Category</label>
@@ -46,7 +58,7 @@ export default class AddPostComponent extends Component{
                     </select>
                     <label>Post Content</label>
                     <textarea name="desc" value={this.state.desc} onChange={this.changeInput} className="form-control form-element"></textarea>
-                    <input type="submit" className="btn btn-info margin-button"></input>
+                    <input type="button" className="btn btn-info margin-button" value="Submit" onClick={this.handleSubmit}></input>
                 </form>
             </div>
         )
