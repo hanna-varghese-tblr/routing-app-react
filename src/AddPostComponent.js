@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SimpleReactValidator from 'simple-react-validator';
+
 export default class AddPostComponent extends Component{
     constructor(props)
     {
@@ -10,7 +10,7 @@ export default class AddPostComponent extends Component{
             category:'',
             author:''
         };
-        this.validator=new SimpleReactValidator();
+        
         this.changeInput=this.changeInput.bind(this);
     }
     
@@ -26,15 +26,7 @@ export default class AddPostComponent extends Component{
     handleSubmit(e)
     {
         console.log("In submit");
-        if (this.validator.allValid()) {
-            alert('Successfully submitted');
-        } 
-        else {
-            this.validator.showMessages();
-            alert("failed");
-            this.forceUpdate();
-        }
-       // alert("The category title is set to : "+this.state.title+" The description is : "+this.state.desc);
+       
     }
     render()
     {
@@ -44,8 +36,6 @@ export default class AddPostComponent extends Component{
                 <form >
                     <label>Post Title</label>
                     <input type="text" name="title" className="form-control form-element" value={this.state.title} onChange={this.changeInput}></input>
-                    { this.validator.message('title', this.state.title, 'required') }
-                   
                     <label>Post Author</label>
                     <input type="text" name="author" className="form-control form-element" value={this.state.author} onChange={this.changeInput}></input>
                     <label>Post Category</label>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ShowList from './ShowList';
+
 export default class AddCategoryComponent extends Component{
     constructor(props)
     {
@@ -53,8 +54,6 @@ export default class AddCategoryComponent extends Component{
                         <textarea value={this.state.desc} onChange={this.descChange} className="form-control form-element"></textarea>
                         <input type="button"  onClick={this.handleSubmit} className="btn btn-primary margin-button" value="Submit"></input>
                     </form>
-
-                
                 </div>
                 <div className="padding_cls"> 
                     <ShowList names={this.state.CategoryList}></ShowList>

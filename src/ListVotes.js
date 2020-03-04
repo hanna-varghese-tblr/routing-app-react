@@ -8,8 +8,10 @@ export default class ListVotes extends Component
     render()
     {
         return (
-            {this.props.VoteItems.map((votes) => <div className="card"> <div className="card-body">{votes}</div></div>)}
-                
+            this.props.VoteItems.map((votes) => 
+                <div className="card"> 
+                    <div className="card-body">{votes}</div>
+                </div>)
         )
     }
 }

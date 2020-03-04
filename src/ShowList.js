@@ -2,10 +2,10 @@ import React,{Component} from 'react';
 
 export default class ShowList extends Component
 {
-    constructor(props)
+   /* constructor(props)
     {
         super(props)   
-    }
+    }*/
 
     render() {
         return (

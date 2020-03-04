@@ -1,30 +1,68 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import ListPost from './ListPost';
+import './App.css';
+import { loadProgressBar } from 'axios-progress-bar'
+import 'axios-progress-bar/dist/nprogress.css'
+import ReactPaginate from 'react-paginate';
+loadProgressBar();
 
 export default class CategoryComponent extends Component{
     constructor(props)
     {
-        super(props)
-        this.clickDetected=this.clickDetected.bind(this);
+        super(props);
+        this.state={
+            posts:[],
+            offset:0,
+            perPage:5
+        };
     }
-    clickDetected()
+    handlePageClick = data => {
+        let selected = data.selected; //gives selected page number
+        let offset = Math.ceil(selected * this.state.perPage); //Offset id the starting data key in each click.eg 5,10,15..
+        this.setState({ offset: offset }, () => {
+          this.loadDataCall();
+        });
+    };
+    loadDataCall()
     {
-        alert("Here is the promised alert");
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+        .then(res=>{
+            var endIndex = this.state.offset + this.state.perPage;
+            var posts_trimmed=res.data.slice(this.state.offset, endIndex);
+
+            var page_count=res.data.length / this.state.perPage;
+            this.setState({
+                posts:posts_trimmed,
+                pageCount:page_count
+            })
+          },(error) => {
+            console.log(error);
+          });
+    }
+    componentDidMount()
+    {
+        this.loadDataCall();
     }
     render()
     {
         return(
             <div className="padding_cls">
-            <h2 className="padding_cls">Hai Welcome to category component</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                Lorem Ipsum has been the industry's standard dummy text ever since the 
-                1500s, when an unknown printer took a galley of type and scrambled it to 
-                make a type specimen book. It has survived not only five centuries, but 
-                also the leap into electronic typesetting, remaining essentially unchanged. 
-                It was popularised in the 1960s with the release of Letraset sheets 
-                containing Lorem Ipsum passages, and more recently with desktop publishing 
-                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                <button className="btn btn-danger" onClick={this.clickDetected}>Click for Alert</button>
-                
+                <p className="page-title">Fetching Data Using Axios</p>
+                <ListPost disp={this.state.posts} ></ListPost>
+                <ReactPaginate
+                    previousLabel={'Previous'}
+                    nextLabel={'Next'}
+                    breakLabel={'...'}
+                    breakClassName={'break-me'}
+                    pageCount={this.state.pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={this.handlePageClick}
+                    containerClassName={'pagination'}
+                    subContainerClassName={'pages pagination'}
+                    activeClassName={'active'}
+                />
             </div>
         )
     }

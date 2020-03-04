@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-/*import ListVotes from './ListVotes.js';*/
 
 export default class VoteComponent extends Component
 {
@@ -20,9 +19,9 @@ export default class VoteComponent extends Component
     handleClick(i)
     {
         let items_vote=[this.state.VoteItems];
-        let curr=items_vote[0][i].votes;
+       // let curr=items_vote[0][i].votes;
         let new_num=items_vote[0][i].votes++;
-        let ref=items_vote[0][i].votes;
+       // let ref=items_vote[0][i].votes;
         this.setState({
             ref:new_num
         })

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Contacts from './Contacts';
-/*import data from './data';*/
 
 export default class PostComponent extends Component{
     constructor(props)

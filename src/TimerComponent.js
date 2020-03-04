@@ -14,7 +14,6 @@ export default class TimerComponent extends Component
           () => this.tick(),
           1000
         );
-        alert("component mounted");
     }
     componentDidUpdate()
     {
@@ -23,7 +22,6 @@ export default class TimerComponent extends Component
     componentWillUnmount()
     {
         clearInterval(this.tick);
-        alert("Component unmounted");
     }
     tick()
     {
