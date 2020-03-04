@@ -17,6 +17,7 @@ export default class CategoryComponent extends Component{
             perPage:5
         };
     }
+    /*PAGINATION PACKAGE COMMAND npm install react-paginate --save */
     handlePageClick = data => {
         let selected = data.selected; //gives selected page number
         let offset = Math.ceil(selected * this.state.perPage); //Offset id the starting data key in each click.eg 5,10,15..
